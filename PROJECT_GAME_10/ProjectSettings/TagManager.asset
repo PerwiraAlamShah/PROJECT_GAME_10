@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Orange
+  - Trap
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float dirX;
 
     // Movement State
-    private enum MovementState { idle, run, fall, jump };
+    private enum MovementState { idle, run, fall, jump, hit, death };
     private MovementState state = MovementState.idle;
 
     // Start is called before the first frame update
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, Jump);
+            Debug.Log("Jump");
         }
     }
     #endregion
