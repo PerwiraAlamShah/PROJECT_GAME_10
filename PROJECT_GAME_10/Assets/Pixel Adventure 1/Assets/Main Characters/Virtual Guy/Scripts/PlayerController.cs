@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,14 +11,26 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D coll;
     private Animator anim;
 
+    // Player Health
+    private int playerHealth = 3;
+    public TextMeshProUGUI textHealth;
+
     [SerializeField] private LayerMask jumpalbeGround;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float Jump = 14f;
     private float dirX;
 
+    // Item Collection
+    public GameObject hitEffect;
+    private int orange = 0;
+    public TextMeshProUGUI textScore;
+    public GameOverScreen GameOverScreen;
+
     // Movement State
     private enum MovementState { idle, run, fall, jump, hit, death };
     private MovementState state = MovementState.idle;
+
+    public GameObject deathMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +61,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Jump");
         }
     }
+
     #endregion
 
     #region UpdateAnimation
@@ -88,6 +102,56 @@ public class PlayerController : MonoBehaviour
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpalbeGround);
     }
+    #endregion
+
+    #region onTriggerEnter2D
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Trap"))
+        {
+            playerHealth -= 1;
+            textHealth.text = "" + playerHealth;
+            if (playerHealth == 0)
+            {
+                Death();
+            }
+
+        }
+
+        if (other.gameObject.CompareTag("Orange"))
+        {
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 0.3f);
+            Destroy(other.gameObject);
+            orange += 1;
+            Debug.Log("Orange : " + orange);
+            textScore.text = "" + orange;
+        }
+    }
+    #endregion
+
+    #region PlayerHealth
+    private void Death()
+    {
+        // rb.bodyType = RigidbodyType2D.Static;
+        anim.SetTrigger("death");
+        deathMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
 
     #endregion
+
+    #region ItemCollection
+    public void GameOver()
+    {
+        GameOverScreen.Setup(orange);
+    }
+    #endregion
+
+
+
+
+
+
+
 }
