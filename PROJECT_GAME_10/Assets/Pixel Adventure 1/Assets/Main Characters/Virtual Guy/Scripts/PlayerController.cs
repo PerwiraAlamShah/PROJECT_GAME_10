@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     public GameObject hitEffect;
     private int orange = 0;
     public TextMeshProUGUI textScore;
-    public GameOverScreen GameOverScreen;
 
     // Movement State
     private enum MovementState { idle, run, fall, jump, hit, death };
@@ -139,13 +138,6 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    #endregion
-
-    #region ItemCollection
-    public void GameOver()
-    {
-        GameOverScreen.Setup(orange);
-    }
     #endregion
 
 

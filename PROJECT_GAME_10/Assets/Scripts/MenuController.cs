@@ -31,6 +31,7 @@ public class MenuController : MonoBehaviour
     public void PauseQuit()
     {
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
     }
 
     #endregion
@@ -49,4 +50,33 @@ public class MenuController : MonoBehaviour
     }
 
     #endregion
+
+    #region Button MainMenu
+
+    public void MenuPlay()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public GameObject OptionMenu;
+    public void MenuOption()
+    {
+        OptionMenu.SetActive(true);
+    }
+
+    public void MenuOptionClose()
+    {
+        OptionMenu.SetActive(false);
+    }
+
+    public void MenuQuit()
+    {
+        Application.Quit();
+    }
+
+    #endregion
+
+
+
+
 }
