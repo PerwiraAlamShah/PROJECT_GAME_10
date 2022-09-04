@@ -55,7 +55,7 @@ public class MenuController : MonoBehaviour
 
     public void MenuPlay()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("MainLevel");
     }
 
     public GameObject OptionMenu;
@@ -76,7 +76,29 @@ public class MenuController : MonoBehaviour
 
     #endregion
 
+    #region Button MainLevel
 
+    public void Level1()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("Level 2");
+    }
+
+    public void Level3()
+    {
+        SceneManager.LoadScene("Level 3");
+    }
+
+    public void LevelBack()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    #endregion
 
 
 }
