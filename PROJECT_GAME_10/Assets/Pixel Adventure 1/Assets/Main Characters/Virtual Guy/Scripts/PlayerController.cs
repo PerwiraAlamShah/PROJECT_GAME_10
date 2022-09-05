@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask jumpalbeGround;
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float Jump = 14f;
+    [SerializeField] private float Jump = 15f;
     private float dirX;
 
     // Item Collection
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded())
+        if (Input.GetButtonDown("Jump") && isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, Jump);
             Debug.Log("Jump");
