@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI textScore;
 
     // Movement State
-    private enum MovementState { idle, run, fall, jump, hit, death };
+    private enum MovementState { idle, run, fall, jump };
     private MovementState state = MovementState.idle;
 
     public GameObject deathMenu;
@@ -109,6 +109,17 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Trap"))
         {
             playerHealth -= 1;
+            textHealth.text = "" + playerHealth;
+            if (playerHealth == 0)
+            {
+                Death();
+            }
+
+        }
+
+        if (other.gameObject.CompareTag("TrapGrid"))
+        {
+            playerHealth -= 3;
             textHealth.text = "" + playerHealth;
             if (playerHealth == 0)
             {
