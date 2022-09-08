@@ -58,17 +58,6 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("MainLevel");
     }
 
-    public GameObject OptionMenu;
-    public void MenuOption()
-    {
-        OptionMenu.SetActive(true);
-    }
-
-    public void MenuOptionClose()
-    {
-        OptionMenu.SetActive(false);
-    }
-
     public void MenuQuit()
     {
         Application.Quit();
@@ -99,6 +88,19 @@ public class MenuController : MonoBehaviour
     }
 
     #endregion
+
+    #region Button Finish
+
+    public void MenuFinish()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
+    }
+
+    #endregion
+
+
+
 
 
 }

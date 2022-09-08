@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private MovementState state = MovementState.idle;
 
     public GameObject deathMenu;
+    public GameObject finishMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -137,6 +138,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Orange : " + orange);
             textScore.text = "" + orange;
         }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            Finish();
+        }
+
     }
     #endregion
 
@@ -146,6 +153,15 @@ public class PlayerController : MonoBehaviour
         // rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
         deathMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    #endregion
+
+    #region PlayerFinish
+    private void Finish()
+    {
+        finishMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
