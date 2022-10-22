@@ -1,5 +1,5 @@
 # PROJECT_GAME_10
-GAME PROJECT UNITY 2D
+GAME PROJECT UNITY 2D ( Study )
 ![Screenshot 2022-09-10 124941](https://user-images.githubusercontent.com/69493538/189471136-0b146a8d-8850-4c33-b0fa-462c1cca793a.png)
 
 
